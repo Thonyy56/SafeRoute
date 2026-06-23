@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>SafeRoute</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <h1>SafeRoute</h1>
+            <p class="tagline">Orientação e apoio contra a violência contra a mulher</p>
+        </header>
+
+        <main class="container">
+            <section>
+                <h2>O que é a violência contra a mulher?</h2>
+                <p>A violência contra a mulher afeta todas as classes sociais, etnias e regiões brasileiras. Existem 5 formas dessa violência:</p>
+                <ol>
+                    <li><strong>Física:</strong> Qualquer conduta que ofenda a integridade ou saúde física da vítima.</li>
+                    <li><strong>Psicológica:</strong> Ações que causem dano emocional e diminuam a autoestima.</li>
+                    <li><strong>Sexual:</strong> Forçar a participação em uma relação sexual indesejada.</li>
+                    <li><strong>Patrimonial:</strong> Ações que destruam bens ou controlem recursos da vítima.</li>
+                    <li><strong>Moral:</strong> Atitudes como xingar e expor a vida íntima da vítima.</li>
+                </ol>
+                <p>Através de estudos e com a intenção de ajudar as mulheres de Apodi e regiões próximas, nosso grupo criou o SafeRoute — um site de direcionamento e orientação por meio de relatos simples, porém eficazes.</p>
+            </section>
+        </main>
+
+        <div id="alerta" role="status" aria-live="polite"></div>
+
+        <section class="chat-section">
+            <div class="chat-card" id="chat-card" data-firebase-placeholder="true">
+                <div class="chat-header">
+                    <h3>Chat de Apoio (em desenvolvimento)</h3>
+                    <small style="color:var(--muted)"></small>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="msg">Bem-vinda(o)! Este chat será habilitado em breve.</div>
+                </div>
+                <form class="chat-form" id="chat-form" onsubmit="event.preventDefault();">
+                    <textarea id="chat-input" placeholder="Escreva sua mensagem..." aria-label="Mensagem"></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+        <script>
+            var mensagens = [
+                "⚠️ Enquanto você lê essa página, casos de violência continuam acontecendo.",
+                "⚠️ Denunciar pode salvar vidas."
+            ];
+
+            var indice = 0;
+
+            function mostrarAlerta() {
+                var alerta = document.getElementById("alerta");
+                alerta.textContent = mensagens[indice];
+                alerta.style.display = "block";
+                indice = (indice + 1) % mensagens.length;
+                setTimeout(function() {
+                    alerta.style.display = "none";
+                }, 5000);
+            }
+
+            mostrarAlerta();
+            setInterval(mostrarAlerta, 20000);
+        </script>
+    </body>
+</html>
